@@ -11,6 +11,19 @@ from util import html
 import numpy as np
 
 
+def get_gpu_info():
+    gpu_info = ""
+    if torch.cuda.is_available():
+        gpu_device = torch.cuda.get_device_properties(0)
+        gpu_info = (f"{gpu_device.name} {round(gpu_device.total_memory / 1024 ** 3)} GB, "
+                    f"Compute Capability {gpu_device.major}.{gpu_device.minor}")
+    else:
+        gpu_info = "None"
+
+    return gpu_info
+
+
+print(get_gpu_info())
 if __name__ == '__main__':
     opt = TestOptions().parse()
     opt.num_threads = 0
