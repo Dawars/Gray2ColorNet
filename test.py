@@ -89,6 +89,6 @@ if __name__ == '__main__':
         Path(str(outputs[i])).parent.mkdir(exist_ok=True, parents=True)
         if i % 5 == 0:
             print('processing (%04d)-th image... %s' % (i, img_path))
-        save_images(webpage, visuals, outputs[i], aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)
+        save_images(webpage, visuals, str(outputs[i]), aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)
     webpage.save()
     print('Histogram Intersection: %.4f' % np.mean(scores))
