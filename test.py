@@ -86,7 +86,7 @@ if __name__ == '__main__':
         img_path = model.get_image_paths()
         metrics = model.compute_scores()
         scores.extend(metrics)
-        Path(outputs[i]).parent.mkdir(exist_ok=True, parents=True)
+        Path(str(outputs[i])).parent.mkdir(exist_ok=True, parents=True)
         if i % 5 == 0:
             print('processing (%04d)-th image... %s' % (i, img_path))
         save_images(webpage, visuals, outputs[i], aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)

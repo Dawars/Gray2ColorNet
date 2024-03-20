@@ -143,8 +143,8 @@ class ColorizationDataset(BaseDataset):
 
     def __getitem__(self, index):
         path_A, path_R = self.AB_paths[index]
-        im_A_l, im_A_ab = self.process_img(path_A, self.transform_A)
-        im_R_l, im_R_ab = self.process_img(path_R, self.transform_R)
+        im_A_l, im_A_ab = self.process_img(str(path_A), self.transform_A)
+        im_R_l, im_R_ab = self.process_img(str(path_R), self.transform_R)
         hist_ab = im_R_ab
         label = torch.Tensor([0]).long()
 
@@ -155,7 +155,7 @@ class ColorizationDataset(BaseDataset):
             'R_ab': im_R_ab,
             'hist_ab': hist_ab,
             'labels': label,
-            'A_paths': path_A
+            'A_paths': str(path_A)
         }
         return im_dict
 
